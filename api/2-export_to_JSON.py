@@ -39,7 +39,7 @@ todos?userId={USER_ID}"
     # Write JSON data to file
     json_filename = f"{USER_ID}.json"
     with open(json_filename, 'w') as json_file:
-        json.dump(json_data, json_file, indent=4)
+        json.dump(json_data, json_file)
 
 
 if __name__ == "__main__":
