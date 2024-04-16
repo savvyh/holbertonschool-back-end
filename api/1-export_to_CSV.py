@@ -8,8 +8,8 @@ import requests
 import sys
 
 
-def get_todo_progress(USER_ID):
-    """script TO DO list"""
+def export_csv(USER_ID):
+    """export data in the csv format"""
     # Endpoint URLs
     user_url = f"https://jsonplaceholder.typicode.com/users/{USER_ID}"
     todos_url = f"https://jsonplaceholder.typicode.com/users/{USER_ID}/todos"
@@ -17,7 +17,6 @@ def get_todo_progress(USER_ID):
     # Fetch user information
     user_response = requests.get(user_url)
     user_data = user_response.json()
-    USER_ID = user_data['id']
     USERNAME = user_data['name']
 
     # Fetch TODOs for the user
@@ -25,22 +24,17 @@ def get_todo_progress(USER_ID):
     todos_data = todos_response.json()
 
     csv_filename = f"{USER_ID}.csv"
-    with open(csv_filename, 'w', newline='') as csvfile:
-        field = ['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE']
-        writer = csv.DictWriter(csvfile, fieldnames=field,
-                                quoting=csv.QUOTE_ALL)
+    with open(csv_filename, mode='w', newline='') as file:
+        csv_writer = csv.writer(file, quoting=csv.QUOTE_ALL)
 
-        writer.writeheader()
         for task in todos_data:
-            writer.writerow({
-                'USER_ID': USER_ID,
-                'USERNAME': USERNAME,
-                'TASK_COMPLETED_STATUS': 'True'
-                if task['completed'] else 'False',
-                'TASK_TITLE': task['title']
-            })
+            TASK_COMPLETED_STATUS = task
+            TASK_TITLE = task
+            csv_writer.writerow([USER_ID, USERNAME,
+                                 TASK_COMPLETED_STATUS['completed'],
+                                 TASK_TITLE['title']])
 
 
 if __name__ == "__main__":
     USER_ID = int(sys.argv[1])
-    get_todo_progress(USER_ID)
+    export_csv(USER_ID)
