@@ -3,9 +3,9 @@
 Python script to export data in the json format.
 """
 
+import json
 import requests
 import sys
-import json
 
 
 def export_json(USER_ID):
