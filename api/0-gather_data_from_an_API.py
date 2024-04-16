@@ -20,7 +20,7 @@ def get_todo_progress(employee_id):
     user_data = user_response.json()
     EMPLOYEE_NAME = user_data['name']
 
-    # Fetch TODOs for the user  
+    # Fetch TODOs for the user
     todos_response = requests.get(todos_url)
     todos_data = todos_response.json()
 
