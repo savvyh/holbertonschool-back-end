@@ -25,8 +25,12 @@ todos?userId={USER_ID}"
     # Prepare data in JSON format
     tasks = []
     for task in todos_data:
-        tasks.append({"task": task['title'], "completed":
-                           task['completed'], "username": USERNAME})
+        task_data = {
+            "task": task['title'],
+            "completed": task['completed'],
+            "username": USERNAME
+        }
+        tasks.append(task_data)
 
     json_data = {"USER_ID": tasks}
 
