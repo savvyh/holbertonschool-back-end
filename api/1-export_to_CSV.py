@@ -15,7 +15,7 @@ def export_csv(USER_ID):
     # Fetch user information
     user_response = requests.get(user_url)
     user_data = user_response.json()
-    USERNAME = user_data['name']
+    USERNAME = user_data['username']
 
     # Fetch TODOs for the user
     todos_response = requests.get(todos_url)
