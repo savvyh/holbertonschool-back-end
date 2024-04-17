@@ -32,7 +32,7 @@ todos?userId={USER_ID}"
         }
         tasks.append(task_data)
 
-    json_data = {"USER_ID": tasks}
+    json_data = {USER_ID: tasks}
 
     # Write JSON data to file
     json_filename = f"{USER_ID}.json"
