@@ -35,7 +35,8 @@ todos?userId={USER_ID}"
     json_data = {"USER_ID": tasks}
 
     # Write JSON data to file
-    with open(f"{USER_ID}.json", 'w') as json_file:
+    json_filename = f"{USER_ID}.json"
+    with open(json_filename, 'w') as json_file:
         json.dump(json_data, json_file)
 
 
