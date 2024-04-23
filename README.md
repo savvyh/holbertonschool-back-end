@@ -1,6 +1,7 @@
 # Holberton Back-End
 
-- API 
+- API
+- Python variable annotations
 
 ## Authors 🧞‍♀️
 Sarah Boutier
